@@ -82,8 +82,28 @@ public class Gs3Application implements CommandLineRunner{
 				endereco3, Arrays.asList(telefone3), 
 				emails3);
 		
+		TelefoneEntity telefone4 = new TelefoneEntity(TipoTelefoneEnum.CELULAR.getCod(), 987653521, 62);
+		EnderecoEntity endereco4 = new EnderecoEntity(72010173, "jonasveiga", "belo horizonte", "BH", "MG", "teste2");
+		Set<String> emails4 = new HashSet<String>();
+		emails4.add("rodrigo.jeymenson@hotmail.com");
 		
-		cltRepository.saveAll(Arrays.asList(cliente1,cliente2,cliente3));
+		ClienteEntity cliente4 = new ClienteEntity( "Rodrigo Alves", 
+				"74567039213", 
+				endereco4, Arrays.asList(telefone4), 
+				emails4);
+		
+		TelefoneEntity telefone5 = new TelefoneEntity(TipoTelefoneEnum.CELULAR.getCod(), 992642145, 61);
+		EnderecoEntity endereco5 = new EnderecoEntity(72010121, "ceilandia", "brasilia", "Brasilia", "DF", "teste3");
+		Set<String> emails5 = new HashSet<String>();
+		emails5.add("amanda.souza@hotmail.com");
+		
+		ClienteEntity cliente5 = new ClienteEntity( "Amanda Souza", 
+				"74567039631", 
+				endereco5, Arrays.asList(telefone5), 
+				emails5);
+		
+		
+		cltRepository.saveAll(Arrays.asList(cliente1,cliente2,cliente3,cliente4,cliente5));
 	}
 
 }

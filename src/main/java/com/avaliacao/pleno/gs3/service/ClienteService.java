@@ -1,6 +1,7 @@
 package com.avaliacao.pleno.gs3.service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -31,8 +32,12 @@ public class ClienteService {
 		return repository.findAll();
 	}
 	
-	public ClienteDTO createOrUpdate(ClienteFilter clt) {
+	public ClienteDTO createOrUpdate(ClienteFilter clt) throws NegocioException {
 		ClienteEntity clienteEntity = mapper.clienteFilterToClienteEntity(clt);
+		
+		//Transforma cep String to cep Int
+		clienteEntity.getEndereco().setCep(transformCepStringtoCepInteger(clt.getEndereco().getCep()));
+		
 		addTelefoneCliente(clt.getTelefones(), clienteEntity);
 		
 		return mapper.clienteEntityToClienteDTO(repository.save(clienteEntity));
@@ -69,11 +74,24 @@ public class ClienteService {
 	
 	public void addTelefoneCliente(List<TelefoneFilter> telefones, ClienteEntity clt) {
 		
-		List<TelefoneEntity> listTelefone = telefones.stream().map(x ->{
+		 List<TelefoneEntity> listTelefone = telefones.stream().map(x ->{
 			return new TelefoneEntity(x.getTipoTelefone(), x.getNumeroTelefone(), x.getDdd());
 		}).collect(Collectors.toList());
 		
 		clt.setTelefones(listTelefone);
+	}
+	
+	public Integer transformCepStringtoCepInteger(String cep) throws NegocioException {
+		Integer cepInt;
+		cep = cep.replaceAll("-", "");
+		try {
+			cepInt = Integer.parseInt(cep);
+		}catch (Exception e) {
+			throw new NegocioException("Erro de formataçao");
+		}
+		
+		return cepInt;
+		
 	}
 
 }

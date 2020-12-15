@@ -43,7 +43,7 @@ public class ClienteController {
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<ClienteDTO> createOrUpdate(@RequestBody @Valid ClienteFilter clt) {
+	public ResponseEntity<ClienteDTO> createOrUpdate(@RequestBody @Valid ClienteFilter clt) throws NegocioException {
 		
 		ClienteDTO cliente = service.createOrUpdate(clt);
 		

@@ -8,7 +8,7 @@ public class TelefoneFilter {
 	private int tipoTelefone;
 	
 	@NotEmpty(message = "Telefone Obrigatório")
-	private int numeroTelefone;
+	private Integer numeroTelefone;
 	
 	@NotEmpty(message = "DDD Obrigatório")
 	private int ddd;
@@ -32,11 +32,11 @@ public class TelefoneFilter {
 		this.tipoTelefone = tipoTelefone;
 	}
 
-	public int getNumeroTelefone() {
+	public Integer getNumeroTelefone() {
 		return numeroTelefone;
 	}
 
-	public void setNumeroTelefone(int numeroTelefone) {
+	public void setNumeroTelefone(Integer numeroTelefone) {
 		this.numeroTelefone = numeroTelefone;
 	}
 

@@ -5,11 +5,12 @@ import java.util.Set;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class ClienteFilter {
 	
-	private int id;
+	private int idCliente;
 	
 	@NotEmpty(message = "Nome Obrigatório")
 	@Size(min = 3,max = 100)
@@ -18,13 +19,13 @@ public class ClienteFilter {
 	@NotEmpty(message = "Cpf Obrigatório")
 	private String cpf;
 	
-	@NotEmpty(message = "Endereço Obrigatório")
+	@NotNull
 	private EnderecoFilter endereco;
 	
-	@NotEmpty(message = "Pelo menos um telefone deve ser cadastrado")
+	@NotNull
 	private List<TelefoneFilter> telefones;
 	
-	@NotEmpty(message = "Pelo menos um email deve ser cadastrado")
+	@NotNull
 	private Set<String> emails;
 	
 	public ClienteFilter() {
@@ -57,11 +58,11 @@ public class ClienteFilter {
 		this.cpf = cpf;
 	}
 
-	public EnderecoFilter getEnderecos() {
+	public EnderecoFilter getEndereco() {
 		return endereco;
 	}
 
-	public void setEnderecos(EnderecoFilter endereco) {
+	public void setEndereco(EnderecoFilter endereco) {
 		this.endereco = endereco;
 	}
 
@@ -81,12 +82,12 @@ public class ClienteFilter {
 		this.emails = emails;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdCliente() {
+		return idCliente;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdCliente(int idCliente) {
+		this.idCliente = idCliente;
 	}
 	
 	

@@ -20,7 +20,7 @@ public class ClienteDTO {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
-		this.endereco = endereco;
+		this.setEndereco(endereco);
 		this.emails = emails;
 		this.telefones = telefones;
 	}
@@ -36,12 +36,6 @@ public class ClienteDTO {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-	public EnderecoDTO getEnderecos() {
-		return endereco;
-	}
-	public void setEnderecos(EnderecoDTO endereco) {
-		this.endereco = endereco;
 	}
 	public List<String> getEmails() {
 		return emails;
@@ -62,6 +56,14 @@ public class ClienteDTO {
 
 	public void setIdCliente(int idCliente) {
 		this.idCliente = idCliente;
+	}
+
+	public EnderecoDTO getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoDTO endereco) {
+		this.endereco = endereco;
 	}
 	
 	

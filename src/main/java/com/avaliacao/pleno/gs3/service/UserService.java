@@ -14,9 +14,7 @@ public class UserService {
 	private JWTUtil util;
 	
 	public String getUser(String token) {
-		if(util.tokenValido(token))
 			return getUserAuthenticated().getUsername();
-		return null;
 	}
 
 	//Retorna o usuario logado na sessão, se não tiver retorna null

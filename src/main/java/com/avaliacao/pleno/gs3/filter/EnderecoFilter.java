@@ -1,11 +1,12 @@
 package com.avaliacao.pleno.gs3.filter;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class EnderecoFilter {
 	
-	@NotEmpty(message = "Cep Obrigatório")
-	private int cep;
+	@NotEmpty(message="Cep Obrigatório")
+	private String cep;
 	
 	@NotEmpty(message = "Logradouro Obrigatório")
 	private String logradouro;
@@ -26,7 +27,7 @@ public class EnderecoFilter {
 		super();
 	}
 
-	public EnderecoFilter(int cep, String logradouro, String bairro, String cidade, String uf, String complemento) {
+	public EnderecoFilter(String cep, String logradouro, String bairro, String cidade, String uf, String complemento) {
 		super();
 		this.cep = cep;
 		this.logradouro = logradouro;
@@ -36,11 +37,11 @@ public class EnderecoFilter {
 		this.complemento = complemento;
 	}
 
-	public int getCep() {
+	public String getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 

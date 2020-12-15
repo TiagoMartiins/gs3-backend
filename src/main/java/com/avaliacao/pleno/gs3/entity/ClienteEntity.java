@@ -83,11 +83,11 @@ public class ClienteEntity implements Serializable {
 		this.cpf = cpf;
 	}
 
-	public EnderecoEntity getEnderecos() {
+	public EnderecoEntity getEndereco() {
 		return endereco;
 	}
 
-	public void setEnderecos(EnderecoEntity endereco) {
+	public void setEndereco(EnderecoEntity endereco) {
 		this.endereco = endereco;
 	}
 

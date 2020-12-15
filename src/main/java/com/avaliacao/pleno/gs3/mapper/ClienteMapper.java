@@ -12,6 +12,7 @@ public interface ClienteMapper {
 	
 	@Mapping(ignore = true, target = "idCliente")
 	@Mapping(ignore = true, target = "telefones")
+	@Mapping(ignore= true, target = "endereco.cep")
 	ClienteEntity clienteFilterToClienteEntity(ClienteFilter cliente);
 	
 	ClienteDTO clienteEntityToClienteDTO(ClienteEntity cliente); 
