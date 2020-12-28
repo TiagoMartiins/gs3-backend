@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.avaliacao.pleno.gs3.dto.UsuarioAutenticadoDTO;
 import com.avaliacao.pleno.gs3.exception.NegocioException;
+import com.avaliacao.pleno.gs3.security.UserSS;
 import com.avaliacao.pleno.gs3.service.UserService;
 
 @Controller
@@ -21,14 +23,24 @@ public class UsuarioController {
 	@Autowired
 	private UserService service;
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<String> getUser(@RequestHeader(name = "Authorization") String token) throws NegocioException {
+	@RequestMapping(path = "/test",method = RequestMethod.GET)
+	public ResponseEntity<UsuarioAutenticadoDTO> getUserCompleted() throws NegocioException {
 		
-		String usuario = service.getUser(token);
+		UserSS usuario = service.getUserAuthenticated();
 		if(usuario != null)
-		return new ResponseEntity<String>(usuario,HttpStatus.OK);
+		{
+			
+			UsuarioAutenticadoDTO userAuthenticated;
+			if(service.isAdmin(usuario))
+				userAuthenticated = new UsuarioAutenticadoDTO(usuario.getUsername(), true);
+			else
+				userAuthenticated = new UsuarioAutenticadoDTO(usuario.getUsername(), false);
+			return new ResponseEntity<UsuarioAutenticadoDTO>(userAuthenticated,HttpStatus.OK);
+			
+		}
 		
-		return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<UsuarioAutenticadoDTO>(HttpStatus.NOT_FOUND);
 	}
+	
 
 }

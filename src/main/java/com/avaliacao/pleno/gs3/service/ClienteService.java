@@ -1,7 +1,6 @@
 package com.avaliacao.pleno.gs3.service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -10,11 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.avaliacao.pleno.gs3.dto.ClienteDTO;
 import com.avaliacao.pleno.gs3.entity.ClienteEntity;
-import com.avaliacao.pleno.gs3.entity.EnderecoEntity;
 import com.avaliacao.pleno.gs3.entity.TelefoneEntity;
 import com.avaliacao.pleno.gs3.exception.NegocioException;
 import com.avaliacao.pleno.gs3.filter.ClienteFilter;
-import com.avaliacao.pleno.gs3.filter.EnderecoFilter;
 import com.avaliacao.pleno.gs3.filter.TelefoneFilter;
 import com.avaliacao.pleno.gs3.mapper.ClienteMapper;
 import com.avaliacao.pleno.gs3.repository.ClienteRepository;
